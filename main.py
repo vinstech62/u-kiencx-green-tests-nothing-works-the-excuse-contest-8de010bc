@@ -10,6 +10,11 @@ import os
 
 LINE = "All tests green because the app does nothing - and doing nothing is the one thing it never gets wrong."
 
+# The sealed gate counts the file, not just the line: keep it to one
+# line, 1-140 UTF-8 chars, no extra whitespace.
+assert 1 <= len(LINE) <= 140
+assert "\n" not in LINE and LINE.strip() == LINE
+
 
 def main():
     os.makedirs("/output", exist_ok=True)
